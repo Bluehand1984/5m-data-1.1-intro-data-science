@@ -15,7 +15,15 @@ def fizz_buzz(number):
     >>> fizz_buzz(15)
     'FizzBuzz'
     """
-    return
+    if number % 3 == 0 and number % 5 == 0:
+        return "FizzBuzz"
+    elif number % 3 == 0:
+        return "Fizz"
+    elif number % 5 == 0:
+        return "Buzz"
+    else:
+        return number
+    
 
 
 # Question 2
@@ -30,7 +38,7 @@ def sum_of_squares(numbers):
     >>> sum_of_squares([2, 4, 6])
     56
     """
-    return
+    return sum(x ** 2 for x in numbers) # if list is too big use generator instead?
 
 
 # Question 3
@@ -45,7 +53,7 @@ def count_vowels(string):
     >>> count_vowels("aeiou")
     5
     """
-    return
+    return sum(1 for char in string if char in 'aeiouAEIOU')
 
 
 # Question 4
@@ -60,7 +68,42 @@ def count_repeats(string):
     >>> count_repeats("aeiou")
     0
     """
-    return
+# This count the total numbers of repeated char
+    counts = {}
+    sum = int(0)
+    # for char in string:
+    #     counts[char] = counts.get(char, 0) + 1
+
+    for char in string:
+        if char in counts:
+            counts[char] += 1
+        else:
+            counts[char] = 1
+
+    #print(counts)
+    for count in counts.values():
+        if count > 1:
+            sum =+ count
+    
+    return sum
+#    return sum(counts.values() for count in counts.values() if count > 1)
+    
+
+    ''' The set unique data structure will give clear sepration of repeated or not
+    seen = set()
+    repeats = set()
+
+    for char in string:
+        if char in seen:
+            repeats.add(char)
+        else:
+            seen.add(char)
+    
+    # Return the total number of unique repeated characters
+    return len(repeats)
+    '''
+
+#print(count_repeats("hellohello"))
 
 
 if __name__ == "__main__":
